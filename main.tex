@@ -1,0 +1,62 @@
+\documentclass[a4paper,12pt,oneside,openany,oldfontcommands]{memoir}
+\chapterstyle{bianchi}
+%
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{klisme} % 学位論文フォーマット
+% %
+\title{Interactive Fashion Outfit Recommendation}
+\author{Hanako Tsukuba} % Author name. It should be exactly the same as the one registered at TWINS
+\affiliation{Master’s Program in Informatics\\
+Degree Programs in Comprehensive Human Sciences\\
+Graduate School of Comprehensive Human Sciences\\
+University of Tsukuba}
+\gradyear{2021} % Graduation year. This is usually the next year of the year when the paper is submitted.
+\gradmonth{March} % Graduation year. March or September for many cases.
+\supervisor{Makoto P. Kato} % Main supervisor
+\subsupervisor{Taro Tsukuba} % Secondary supervisor
+%
+\begin{document}
+% 「TC:ignore」から「TC:endignore」までは文字カウントが無視される
+%TC:ignore
+% %
+\maketitle
+% %
+\frontmatter
+%
+% 抄録
+\input{abstract}
+%
+\setcounter{tocdepth}{3}
+\tableofcontents
+\thispagestyle{empty}
+%
+\mainmatter
+%TC:endignore
+%
+% 本文
+\include{section1}
+\include{section2}
+\include{section3}
+\include{section4}
+\include{section5}
+\include{section6}
+\include{section7}
+%
+%TC:ignore
+\backmatter
+\pagenumbering{roman}
+%
+% 謝辞
+\include{acknowledgment}
+%
+\clearpage
+\bibliographystyle{abbrv}
+% 参考文献
+\bibliography{bibliography}
+%
+%TC:endignore
+\end{document}

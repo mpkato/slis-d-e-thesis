@@ -1,0 +1,65 @@
+\chapter{Introduction}
+\label{sq:Introduction}
+
+% 1 ファッション推薦って広く行われているよね
+Recommendation of fashion items, one of the largest markets in online shopping, has drawn the attention of researchers in the last decades.
+Unlike traditional item recommender systems, fashion recommendation has unique challenges as fashion items are always fitted together with other items.
+Therefore, when items are recommended to users, 
+their compatibility with other items should be considered by recommender systems.
+There have been many studies on fashion compatibility, which have been evaluated with real fashion datasets~\cite{chen2019pog, lin2020outfitnet, li2020hierarchical, verma2020addressing}. 
+
+% 2 ファッション推薦するならインタラクションが絶対いるよね．でも，そういうデータセットや研究はないね．
+Although one of the unique characteristics of fashion recommendation, compatibility, has been extensively studied in the literature, there are several aspects ignored in the existing fashion recommendation studies. 
+One of such aspects is {\it interactivity}. 
+Existing fashion recommendation is passive:
+the recommendation is based on historical, implicit feedback from users and does not actively interact with users. 
+As can be seen in real fashion shopping interaction between customers and store staffs, 
+however,
+interaction in fashion recommendation is vital to capture the user preferences changing over time, and elicit potential user needs that are often difficult to express.
+To the best of our knowledge, although various fashion recommendation datasets are available for traditional fashion recommendation settings~\cite{liu2016mvc, chen2019pog, han2017learning}, there are no studies or datasets for interactive fashion recommendation.
+
+% 3 この論文ではインタラクティブファッション推薦のデータセットの構築します．データセットはだいたいこうやって作ります．
+To bring interactivity to the fashion recommendation, we propose a new fashion outfit recommendation task 
+where an {\it outfit}, which consists of multiple fashion items, is recommended after several rounds of user-system interactions.
+In this task, the system is expected to present a {\it question}, which comprises multiple fashion items, at each round, and the user is expected to select the best fashion item from the presented items. 
+The system is required to learn users' preferences based on their responses gradually and to generate 
+subsequent questions for recommending a suitable outfit based on the users' selected fashion items. 
+This setting is inspired by real fashion shopping interaction between customers and store staff: 
+a store staff recommends some fashion items to a customer
+and tries to find other fashion items that better fit both customers' preferences and their chosen items.
+
+Since there was no dataset available for this task,
+we developed a new dataset for evaluating interactive fashion outfit recommendations. 
+Our dataset consists of fashion items from Polyvore~\cite{han2017learning}, one of the most used datasets for fashion outfit recommendation, and includes 16,768 question candidates that can be asked in the interactive fashion recommendation task.
+Using the developed dataset, researchers can simulate users' responses to a given question
+and evaluate interactive fashion outfit recommendation systems.
+
+
+% 4 この論文ではインタラクティブファッション推薦のためのアルゴリズムを提案します．インタラクティブファッション推薦の基本的なアイデアはこれです．
+We analyzed the developed dataset and evaluated the importance of question selection in interactive fashion outfit recommendations. 
+The analysis showed that (1) the question selection greatly matters for the recommendation performance, (2) the category of fashion items in the question affects the recommendation performance,
+and (3) effective questions are likely to be similar to the previous question and include similar fashion items.  
+Based on these findings, we extracted several features from questions, 
+and developed a question selection model based on a learning-to-rank algorithm. 
+Moreover, we also proposed a new Transformer model to achieve higher accuracy in the interactive recommendation task. 
+Our model encodes questions by Transformer
+and estimates the value of questions based on previous questions and given answers.
+Additionally, we present a practical training method for this Transformer model that reduces the training time while keeping the accuracy.
+
+% 5 実験ではこういう風にして評価をしました．実験結果の主な知見としてはこうでした．
+We conducted experiments with the developed dataset for evaluating our proposed methods.
+The experimental results demonstrated that 
+the proposed Transformer models outperformed the learning-to-rank model with hand-crafted features,
+and Set Transformer is a suitable model for embedding questions in the interactive fashion outfit recommendation task.
+Furthermore, the proposed training method for the Transformer models successfully reduced the training time without sacrificing the accuracy.
+
+% 6 この論文の貢献はいかにあげる通りです：
+The contributions of this work are summarized as follows.
+\begin{itemize}
+\item We proposed a new fashion outfit recommendation task that involves user-system interactions.
+\item We developed the first interactive fashion recommendation dataset that can be used for simulation-based evaluation.
+\item We proposed a learning-to-rank algorithm for the interactive fashion recommendation,
+and Transformer-based methods to further improve the recommendation accuracy. 
+\end{itemize}
+
+We organize the remainder of this paper as follows. In the next section, a brief review of the related works is given. The interactive fashion outfit recommendation task is defined in Section \ref{sq:task}. Section \ref{sq:dataset} analyzes the developed dataset and reveals the properties of the proposed task and dataset. Section \ref{sq:methods} introduces our proposed methods. Section \ref{sq:experiments} displays and discusses findings from a series of experiments. Finally, we conclude this work in Section \ref{sq:conclusions}.
