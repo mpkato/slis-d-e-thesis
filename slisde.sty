@@ -18,6 +18,22 @@
       \begin{center}
         \null\vfil
         {\fontsize{20truept}{28truept}\selectfont \textbf{\@title} \par}
+        \vskip 26em
+        {\fontsize{16truept}{24truept}\selectfont {\textbf \@gradmonth} {\textbf \@gradyear} \par}
+        \vskip 3em
+        {\fontsize{16truept}{24truept}\selectfont \textbf \@author \par}
+        \vskip 3em
+      \end{center}
+    \end{titlingpage}
+    \begin{titlingpage}
+    %\begin{titlepage} % use this for the other documentclass
+      \newgeometry{left=30truemm,right=30truemm,top=30truemm,bottom=30truemm}
+      \let\footnotesize\small
+      \let\footnoterule\relax
+      \let\footnote\thanks
+      \begin{center}
+        \null\vfil
+        {\fontsize{20truept}{28truept}\selectfont \textbf{\@title} \par}
         \vskip 20em
         {\fontsize{16truept}{24truept}\selectfont \textbf \@author \par}
         \vskip 6em
@@ -48,11 +64,6 @@
         \vskip 20truept
       \par
 }%
-{% end code
-        \vskip 20truept
-    {\raggedleft
-      \par Main Academic Advisor: \@supervisor \par
-      \par Secondary Academic Advisor: \@subsupervisor \par      
-    }
+{
   \end{titlingpage}
 }
